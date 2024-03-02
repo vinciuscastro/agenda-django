@@ -19,13 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1u!m9tix#s!8fi=ves00ub(#rgu-*b9tbd^gogudl4ipz1+g9i'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -123,7 +117,19 @@ STATICFILES_DIRS = [
     BASE_DIR / 'base_static'
 ]
 
+STATIC_ROOT = BASE_DIR / 'static'
+
+MEDIA_URL = 'media/'
+
+MEDIA_ROOT = BASE_DIR / 'media/'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+try:
+    from .local_settings import *
+except ImportError:
+    ...
