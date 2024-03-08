@@ -5,7 +5,7 @@ from contact.models import Contact
 
 # Create your views here.
 def index(request):
-    contacts = Contact.objects.filter(show=True).order_by('first_name')
+    contacts = Contact.objects.filter(show=True).order_by('-id')
     paginator = Paginator(contacts, 10)
     page = request.GET.get('page')
     contacts = paginator.get_page(page)
